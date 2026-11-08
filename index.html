@@ -48,6 +48,9 @@
   nav { max-width: 1000px; margin: auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
   .brand { font-family: var(--serif); font-size: 1.6rem; color: var(--rose); text-decoration: none; }
   .brand span { font-style: italic; color: var(--ink); }
+  .brand-with-logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mini { width: 48px; height: 48px; flex-shrink: 0; color: var(--rose); background: var(--card); border-radius: 50%; }
+  .brand-text { font-family: var(--serif); font-size: 1.6rem; color: var(--rose); }
   nav ul { list-style: none; display: flex; gap: 18px; font-size: .85rem; flex-wrap: wrap; }
   nav a { text-decoration: none; color: var(--muted); }
   nav a:hover { color: var(--rose); }
@@ -128,7 +131,17 @@
 
 <header>
   <nav>
-    <a class="brand" href="#inicio">Liss <span>by Meli</span></a>
+    <a class="brand brand-with-logo" href="#inicio"><svg class="logo-mini" viewBox="0 0 200 200" role="img" aria-label="Meli Liss logo" style="color:var(--rose);background:var(--card)">
+    <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width=".6" opacity=".6"/>
+    <path d="M128 42 C150 62 158 92 150 118 C144 138 132 150 120 158" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M118 52 C136 70 140 96 134 120" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
+    <path d="M100 150 C112 140 124 146 128 160 M104 158 C118 152 130 160 134 172" fill="none" stroke="currentColor" stroke-width=".8" opacity=".5"/>
+    <text x="100" y="92" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="34" fill="currentColor">Meli</text>
+    <text x="100" y="118" text-anchor="middle" font-family="Montserrat, system-ui, sans-serif" font-size="15" letter-spacing="7" fill="currentColor">LISS</text>
+    <line x1="62" y1="130" x2="138" y2="130" stroke="currentColor" stroke-width=".8"/>
+    <text x="100" y="146" text-anchor="middle" font-family="Montserrat, system-ui, sans-serif" font-size="6.5" letter-spacing="1.6" fill="currentColor">ALISADOS · KERATINA · BOTOX</text>
+  </svg><span class="brand-text">Liss <span>by Meli</span></span></a>
     <ul>
       <li><a href="#reservar">Reservar</a></li>
       <li><a href="#fotos">Antes y después</a></li>
