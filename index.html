@@ -85,6 +85,8 @@
   .book { text-align: center; }
   .book p { color: var(--muted); margin-bottom: 24px; }
   .book .days-line { color: var(--ink); font-weight: 600; margin: 0 0 24px; }
+  .book label { display: block; font-size: .8rem; color: var(--muted); margin-bottom: 6px; }
+  .book select { padding: 10px 14px; border-radius: 12px; border: 1px solid var(--rose-soft); background: var(--card); color: var(--ink); font-family: var(--sans); font-size: .95rem; margin-bottom: 22px; min-width: 200px; }
 
   .photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
   .pair { background: var(--card); border-radius: 18px; overflow: hidden; box-shadow: 0 6px 30px rgba(120,70,70,.08); }
@@ -182,10 +184,18 @@
 <section id="reservar">
   <p class="eyebrow">Turnos</p>
   <h2>Reservá tu turno</h2>
-  <p class="sub">Para reservar, escribime por Instagram con tu nombre, el servicio que querés y el día que preferís.</p>
+  <p class="sub">Elegí el día que preferís y se abre WhatsApp con el mensaje listo para enviar.</p>
   <div class="card book">
-    <p class="days-line">Lunes, miércoles y viernes · 13:30</p>
-    <a class="btn" href="https://www.instagram.com/melijose24/" target="_blank" rel="noopener">Reservar por Instagram</a>
+    <p class="days-line">Lunes, miércoles y viernes · desde las 13:30</p>
+    <label for="dia">Día que preferís</label>
+    <select id="dia">
+      <option>Lunes</option>
+      <option>Miércoles</option>
+      <option>Viernes</option>
+    </select>
+    <label for="hora">Horario que preferís</label>
+    <input id="hora" type="time" min="13:30" value="13:30" style="padding:10px 14px;border-radius:12px;border:1px solid var(--rose-soft);background:var(--card);color:var(--ink);font-family:var(--sans);font-size:.95rem;margin-bottom:22px;min-width:200px;">
+    <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">Reservar por WhatsApp</a>
   </div>
 </section>
 
@@ -219,9 +229,9 @@
     <div class="card">
       <h3>Días de atención</h3>
       <ul class="days">
-        <li><span>Lunes</span><strong>13:30</strong></li>
-        <li><span>Miércoles</span><strong>13:30</strong></li>
-        <li><span>Viernes</span><strong>13:30</strong></li>
+        <li><span>Lunes</span><strong>desde 13:30</strong></li>
+        <li><span>Miércoles</span><strong>desde 13:30</strong></li>
+        <li><span>Viernes</span><strong>desde 13:30</strong></li>
       </ul>
       <p class="note">Atiendo solo estos días por tener otro trabajo. ¡Gracias por entenderlo!</p>
     </div>
@@ -271,6 +281,21 @@
     pintarBoton();
   });
   pintarBoton();
+</script>
+
+<script>
+  const WA_NUMERO = "5492983694236";
+  const selDia = document.getElementById("dia");
+  const selHora = document.getElementById("hora");
+  const waBtn = document.getElementById("waBtn");
+  function actualizarWhatsApp() {
+    const texto = "Hola, quiero reservar un turno para el día " + selDia.value + (selHora.value ? " a las " + selHora.value : "");
+    waBtn.href = "https://wa.me/" + WA_NUMERO + "?text=" + encodeURIComponent(texto);
+  }
+  selDia.addEventListener("change", actualizarWhatsApp);
+  selHora.addEventListener("change", actualizarWhatsApp);
+  selHora.addEventListener("input", actualizarWhatsApp);
+  actualizarWhatsApp();
 </script>
 
 </body>
